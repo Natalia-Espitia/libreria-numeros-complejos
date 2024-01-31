@@ -1,5 +1,6 @@
 import Libreriacomplejos as lc
 import unittest
+import math
 
 class TestOperaciones(unittest.TestCase):
 
@@ -48,6 +49,28 @@ class TestOperaciones(unittest.TestCase):
         conjugado = lc.conjugado(3, -5)
         self.assertAlmostEquals(conjugado[0], 3)
         self.assertAlmostEquals(conjugado[1], 5)
+
+    def test_polar_cartesiano(self):
+        polar = lc.polar_cartesiano(5.9,math.pi/3)
+        self.assertAlmostEquals(polar[0], -2.95)
+        self.assertAlmostEquals(polar[1], 5.12)
+        polar = lc.polar_cartesiano(2.7, math.pi/4)
+        self.assertAlmostEquals(polar[0], 1.91)
+        self.assertAlmostEquals(polar[1], 1,91)
+
+    def test_cartesiano_polar(self):
+        cartesiano = lc.cartesiano_polar(2, 3)
+        self.assertAlmostEquals(cartesiano[0], 2)
+        self.assertAlmostEquals(cartesiano[1], -3)
+        cartesiano = lc.cartesiano_polar(3, -5)
+        self.assertAlmostEquals(cartesiano[0], 3)
+        self.assertAlmostEquals(cartesiano[1], 5)
+
+    def test_fase(self):
+        fase = lc.fase((3.7, 4.2))
+        self.assertAlmostEquals(fase[0], 0)
+        fase = lc.fase((-1.5, -2.9))
+        self.assertAlmostEquals(fase[0], 2)
 
 
 if __name__ == '__main__':
